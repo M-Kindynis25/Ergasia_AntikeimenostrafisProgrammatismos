@@ -3,7 +3,8 @@
 
 class entities {
 public:
-    entities() {  }
+    entities(){ }
+    virtual coordinates get_coordinate() = 0;
     virtual bool move(char** g_map, coordinates g_size, int in_d_or_n) { return 0; }
 protected:
     coordinates coordinate;
@@ -13,6 +14,7 @@ protected:
 class avatar : public entities {
 public:
     avatar(coordinates in_coordinate, char in_team);
+    coordinates get_coordinate();
     bool move(char** g_map, coordinates g_size, int in_d_or_n);
 private:
     int magic_potions;
@@ -23,6 +25,7 @@ private:
 class beings : public entities {
 public:
     beings();
+    virtual coordinates get_coordinate() = 0;
     bool move(char** g_map, coordinates g_size, int in_d_or_n) { return 0; }
 protected:
     int health;
@@ -34,6 +37,7 @@ protected:
 class werewolves : public beings {
 public:
     werewolves(coordinates in_coordinate);
+    coordinates get_coordinate();
     bool move(char** g_map, coordinates g_size, int in_d_or_n);
 private:
 
@@ -42,6 +46,7 @@ private:
 class vampires : public beings {
 public:
     vampires(coordinates in_coordinate);
+    coordinates get_coordinate();
     bool move(char** g_map, coordinates g_size, int in_d_or_n);
 private:
 

@@ -46,11 +46,9 @@ game::game()
     }
 
     /*  */
-    int number_avatar, number_werewolves, number_vampires;
-    number_avatar = 1;
     number_werewolves = (size.x * size.y) / 15;
     number_vampires = (size.x * size.y) / 15;
-    number_entitiese = number_avatar + number_werewolves + number_vampires;
+    number_entitiese = 1 + number_werewolves + number_vampires;
 
 
     /* Arxikopio oles tes theseis me gi(.) */
@@ -148,8 +146,149 @@ game::~game()
     delete[] map;
 }
 
+
 bool game::next_step_game()
 {
+    int i, j, k, e1, e2;
+    coordinates c;
+    // Orizontia: otan duo onta einai dipla kata ton aksona x
+    for (i = 0; i < size.y; i++){
+        for (j = 0; j < size.x-1; j++) {
+            // idias omadas
+            if (map[i][j] == map[i][j + 1]) {
+                if (map[i][j] == 'w') {
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j) 
+                            e1 = k;
+                        else if (c.y == i && c.x == j + 1)
+                            e2 = k;
+                    }
+                    cout << endl << "idio w sto x aksona" << endl;
+
+                }
+                else if (map[i][j] == 'v') {
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j)
+                            e1 = k;
+                        else if (c.y == i && c.x == j + 1)
+                            e2 = k;
+                    }
+                    cout << endl << "idio v sto x aksona" << endl;
+                }
+            
+            // antipalis omadas
+            }else if ((map[i][j] == 'w' && map[i][j+1] == 'v') || (map[i][j] == 'v' && map[i][j+1] == 'w')) {
+                if (map[i][j] == 'w') {
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j) {
+                            e1 = k;
+                            break;
+                        }                           
+                    }
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j+1) {
+                            e2 = k;
+                            break;
+                        }
+                    }
+                    cout << endl << "antipaloi w and v sto x aksona   " <<e1<<" "<<e2<< endl;
+
+                }
+                else if (map[i][j] == 'v') {
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j) {
+                            e1 = k;
+                            break;
+                        }
+                    }
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j + 1) {
+                            e2 = k;
+                            break;
+                        }
+                    }
+                    
+                    cout << endl << "antipaloi v and w sto x aksona   " << e1 << " " << e2 << endl;
+                }
+            }
+        }
+    }
+    // Katheta: otan duo onta einai dipla kata ton aksona y
+    for (i = 0; i < size.y-1; i++) {
+        for (j = 0; j < size.x; j++) {
+            // idias omadas
+            if (map[i][j] == map[i+1][j]) {
+                if (map[i][j] == 'w') {
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j)
+                            e1 = k;
+                        else if (c.y == i + 1 && c.x == j)
+                            e2 = k;
+                    }
+                    cout << endl << "idio w sto y aksona    " << e1 << " " << e2 << endl;
+                }
+                else if (map[i][j] == 'v') {
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j)
+                            e1 = k;
+                        else if (c.y == i + 1 && c.x == j)
+                            e2 = k;
+                    }
+                    cout << endl << "idio v sto y aksona    " << e1 << " " << e2 << endl;
+                }
+               
+            // antipalis omadas
+            }else if ((map[i][j] == 'w' && map[i+1][j] == 'v') || (map[i][j] == 'v' && map[i+1][j] == 'w')) {
+                if (map[i][j] == 'w') {
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j) {
+                            e1 = k;
+                            break;
+                        }
+                    }
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i +1 && c.x == j) {
+                            e2 = k;
+                            break;
+                        }
+                    }
+                    cout << endl << "antipaloi w and v sto y aksona   " << e1 << " " << e2 << endl;
+                }
+                else if (map[i][j] == 'v') {
+                    for (k = number_werewolves + 1; k < number_entitiese; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i && c.x == j) {
+                            e1 = k;
+                            break;
+                        }
+                    }
+                    for (k = 1; k <= number_werewolves; k++) {
+                        c = ent[k]->get_coordinate();
+                        if (c.y == i+1 && c.x == j) {
+                            e2 = k;
+                            break;
+                        }                 
+                    }
+                    cout << endl << "antipaloi v and x sto y aksona   " << e1 << " " << e2 << endl;
+                }
+            }
+        }
+    }
+    // Diagonia: otan duo onta einai dipla kata ton aksona x*y
+    // Mono ta v
+    
+    /*        */
+
     /* 1-- DAY */
     /* 2-- NIGHT */
     pl_day_night++;
@@ -164,7 +303,7 @@ bool game::next_step_game()
     if (!m)
         return false;
 
-    for (int i = 1; i < number_entitiese; i++) {
+    for (i = 1; i < number_entitiese; i++) {
         ent[i]->move(map, size, day_night);
     }
 
@@ -174,7 +313,7 @@ bool game::next_step_game()
 
 ostream& operator<<(ostream& left, const game& right)
 {
-    system("cls");
+    //system("cls");
     left << endl;
     int i, j;
     for (i = 0; i < right.size.y; i++) {

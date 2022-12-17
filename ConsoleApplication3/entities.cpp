@@ -13,6 +13,8 @@ using namespace std;
 coordinates random_coordinates(int min, int max);
 int random_number(int min, int max);
 
+
+
 /*    AVATAR     */
 
 avatar::avatar(coordinates in_coordinate, char in_team)
@@ -20,6 +22,11 @@ avatar::avatar(coordinates in_coordinate, char in_team)
     coordinate = in_coordinate;
     magic_potions = 1;
     team = in_team;
+}
+
+coordinates avatar::get_coordinate()
+{
+    return coordinate;
 }
 
 bool avatar::move(char** g_map, coordinates g_size, int in_d_or_n)
@@ -44,7 +51,7 @@ bool avatar::move(char** g_map, coordinates g_size, int in_d_or_n)
         cin >> next_step;
         if (next_step == 't') {
             if (team == 'V' && in_d_or_n == 1 && magic_potions > 0) {
-                cout << "Magili epouloso olon ton melon tis omadas ton Vampires" << endl;
+                cout << "Magiki epoulosi olon ton melon tis omadas ton Vampires" << endl;
                 magic_potions--;
                 /*     */
 
@@ -133,6 +140,11 @@ werewolves::werewolves(coordinates in_coordinate)
     coordinate = in_coordinate;
 }
 
+coordinates werewolves::get_coordinate()
+{
+    return coordinate;
+}
+
 bool werewolves::move(char** g_map, coordinates g_size, int in_d_or_n)
 {
     // Me to 1 meni stethori i ontotita
@@ -203,6 +215,11 @@ bool werewolves::move(char** g_map, coordinates g_size, int in_d_or_n)
 vampires::vampires(coordinates in_coordinate)
 {
     coordinate = in_coordinate;
+}
+
+coordinates vampires::get_coordinate()
+{
+    return coordinate;
 }
 
 bool vampires::move(char** g_map, coordinates g_size, int in_d_or_n)

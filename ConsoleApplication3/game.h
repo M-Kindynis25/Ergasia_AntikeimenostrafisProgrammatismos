@@ -14,6 +14,8 @@ private:
     char** map;
     coordinates size;
     entities* ent[700];
+    int number_werewolves;
+    int number_vampires;
     int number_entitiese;
     int pl_day_night;
     int day_night;
