@@ -5,6 +5,7 @@
 #include "entities.h"
 #include "map.h"
 
+//int noe;  // Metritis ontotiton
 
 using namespace std;
 
@@ -27,9 +28,15 @@ main ()
     x = 10;
     y = 10;
     
-    map m(x,y);
     
+    
+    map m(x,y);
     cout<<m;
+    while(true){
+        m.next_cycle();
+        cout<<m;
+    }
+
     
 /*  entities *e[3];
   

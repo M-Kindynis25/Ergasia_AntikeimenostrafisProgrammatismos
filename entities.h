@@ -2,7 +2,7 @@
 
 class entities{
   public:
-    virtual void move()=0;
+    virtual char move(bool a1, bool a2, bool a3, bool a4)=0;
     virtual coordinates get_coordinate()=0;
     virtual void set_coordinate(int in_x, int in_y)=0;
   protected:
@@ -13,7 +13,7 @@ class entities{
 class avatar: public entities{
   public:
     avatar(char in_team, int in_x, int in_y);
-    void move();
+    char move(bool a1, bool a2, bool a3, bool a4);
     coordinates get_coordinate();
     void set_coordinate(int in_x, int in_y);
   private:
@@ -36,7 +36,7 @@ class werewolves: public npc{
     werewolves(int in_x, int in_y);
     coordinates get_coordinate();
     void set_coordinate(int in_x, int in_y);
-    void move();
+    char move(bool a1, bool a2, bool a3, bool a4);
   private:
   
 };
@@ -46,10 +46,12 @@ class vampires: public npc{
     vampires(int in_x, int in_y);
     coordinates get_coordinate();
     void set_coordinate(int in_x, int in_y);
-    void move();
+    char move(bool a1, bool a2, bool a3, bool a4);
   private:
   
 };
+
+
 
 
 
