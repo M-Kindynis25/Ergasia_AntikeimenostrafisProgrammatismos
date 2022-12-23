@@ -5,9 +5,10 @@
 #include "entities.h"
 #include "map.h"
 
-//int noe;  // Metritis ontotiton
+
 
 using namespace std;
+
 
 int
 main ()
@@ -28,21 +29,30 @@ main ()
     x = 10;
     y = 10;
     
-    
+    bool next_game = true;
     
     map m(x,y);
-    cout<<m;
-    while(true){
-        m.next_cycle();
-        cout<<m;
-    }
-
     
-/*  entities *e[3];
-  
-    e[0] = new avatar('W',5,5);
-    e[1] = new werewolves(5,5);
-    e[2] = new vampires(5,5);*/
+    while(next_game){
+        cout<<m;
+        next_game = m.next_cycle();
+    }
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
