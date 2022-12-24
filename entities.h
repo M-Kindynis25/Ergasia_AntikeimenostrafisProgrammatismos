@@ -66,7 +66,6 @@ protected:
 class werewolves : public npc {
 public:
     werewolves(int in_x, int in_y);
-    ~werewolves();
     coordinates get_coordinate();
     void set_coordinate(int in_x, int in_y);
     char move(bool a1, bool a2, bool a3, bool a4, bool a5 = false, bool a6 = false, bool a7 = false, bool a8 = false);
@@ -89,7 +88,6 @@ private:
 class vampires : public npc {
 public:
     vampires(int in_x, int in_y);
-    ~vampires();
     coordinates get_coordinate();
     void set_coordinate(int in_x, int in_y);
     char move(bool a1, bool a2, bool a3, bool a4, bool a5 = false, bool a6 = false, bool a7 = false, bool a8 = false);

@@ -96,11 +96,6 @@ werewolves::werewolves(int in_x, int in_y)
     defense = random_number(1, 2);
 }
 
-werewolves::~werewolves()
-{
-
-}
-
 coordinates werewolves::get_coordinate()
 {
     return coordinate;
@@ -194,11 +189,6 @@ vampires::vampires(int in_x, int in_y)
     power = random_number(1, 3);
     defense = random_number(1, 2);
     //number_of_vampires++;
-}
-
-vampires::~vampires()
-{
-    //number_of_vampires--;
 }
 
 coordinates vampires::get_coordinate()
@@ -332,7 +322,6 @@ int random_number(int min, int max)
 {
     return rand() % (max - min + 1) + min;
 }
-
 
 
 

@@ -15,5 +15,5 @@ private:
     int number_entitiese;
     coordinates size;
     char** array;
-    entities* ent[700];
+    entities* ent[1350]; 
 };

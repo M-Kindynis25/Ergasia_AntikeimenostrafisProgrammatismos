@@ -569,6 +569,8 @@ bool map::next_cycle()
                         if (ent[e2]->get_health() <= 0) {
                             h = ent[e2]->get_coordinate();
                             array[h.y][h.x] = '.';
+                            ent[e2]->set_coordinate(-1, -1);
+
                         }
                     }
                 }
@@ -827,7 +829,6 @@ int number_of_entities(char** arr, coordinates s, char entit) {
 
     return sum;
 }
-
 
 
 
