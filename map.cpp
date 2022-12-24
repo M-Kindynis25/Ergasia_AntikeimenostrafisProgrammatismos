@@ -133,6 +133,10 @@ map::~map()
     for (int i = 0; i < size.y; i++)
         delete[] array[i];
     delete[] array;
+
+    for (int i = 0; i < number_entitiese; i++) {
+        delete ent[i];
+    }
 }
 
 
